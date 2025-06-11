@@ -1,0 +1,25 @@
+# 13. Roman to Integer
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/roman-to-integer/description/?envType=study-plan-v2&envId=programming-skills
+
+class Solution(object):
+    def romanToInt(self, s):
+        num={'I': 1, 'V': 5, 'X': 10, 'L':50, 'C':100, 'D':500, 'M':1000 }
+        value=0
+        prev=0
+        for x in reversed(s):
+            curr=num[x]
+            if curr < prev:
+                value -=curr
+            else:
+                value+=curr
+            prev=curr
+        return value
+
+
+Создал словарь где к каждой цифре привязана арабская цифра, создал prev чтобы сравнивать с прошлой переменной и после каждой итерации, она принимала значение 
+нынешней переменной. 
+Проходимся с конца строки. (0 сначала для того чтобы первая цифра была точно прибавлена).
+Цифра больше прошлого? прибавляем, цифра меньше прошлого? отнимаем
+Потом prev принимает значение curr, чтобы след цифра сравнивалась с предыдущей.
+В римских цифрах если идти с конца, то если нынешняя цифра больше предыдущей? MX, то прибавляем, если IV то отнимаем, вот в итерации I, prev будет принимать значение V с прошлого цикла
