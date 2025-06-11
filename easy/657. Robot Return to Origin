@@ -1,0 +1,9 @@
+# 13. Roman to Integer
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/robot-return-to-origin/description/?envType=study-plan-v2&envId=programming-skills
+
+class Solution(object):
+    def judgeCircle(self, moves):
+        return moves.count('U') == moves.count('D') and moves.count('R') == moves.count('L')
+
+Всё очень просто, если он на той же позиций, то количество действий = количество противодействий, возвращаем все булевым значением 1 строкой)
