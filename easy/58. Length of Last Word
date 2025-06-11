@@ -1,0 +1,12 @@
+# 58. Length of Last Word
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/length-of-last-word/submissions/1660444339/?envType=study-plan-v2&envId=programming-skillss
+
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        s=s.strip()
+        s=s.split()
+        return len(s[len(s)-1])
+        
+
+Легкая задача, удалил все пробелы, закинул все в список и вывел длину последнего элемента списка
