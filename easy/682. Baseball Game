@@ -1,0 +1,22 @@
+# 682. Baseball Game
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/baseball-game/description/?envType=study-plan-v2&envId=programming-skills
+
+class Solution(object):
+    def calPoints(self, ops):
+        rr=[]
+        for i in range(len(ops)):
+            if ops[i].lstrip('-').isdigit():
+                rr.append(int(ops[i]))
+            elif ops[i]=='+':
+                rr.append(rr[len(rr)-1]+rr[len(rr)-2])
+            elif ops[i]=='D':
+                rr.append(rr[len(rr)-1]*2)
+            elif ops[i]=='C':
+                del rr[len(rr)-1]
+        return sum(rr)
+Было легко, создал список куда буду кидать цифры и проворачивать операции, для проверки можно ли кидать в цикл, использовал isdigit() (все элементы списка были изначально строками)
+Но sdigit() проверяет только отриц числа, поэтому перед проверкой sdigit() удалял слева знак '-'.
+Дальше все просто, проходился по списку и если там был знак операции, после ифа операции совершались в другом списке куда уже добавились цифры.
+            
+
