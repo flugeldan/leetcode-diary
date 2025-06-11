@@ -1,0 +1,10 @@
+# 709. To Lower Case
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/to-lower-case/description/?envType=study-plan-v2&envId=programming-skills
+
+class Solution(object):
+    def toLowerCase(self, s):
+        return s.lower()
+        
+
+Задача очень легкая, на знание функции lower() которая все символы в строке делает lowercase
