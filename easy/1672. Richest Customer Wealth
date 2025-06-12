@@ -1,0 +1,12 @@
+# 1672. Richest Customer Wealth
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/richest-customer-wealth/description/?envType=study-plan-v2&envId=programming-skills
+
+Супер легкая задача, прошелся по внутренним спискам закинув их сумму в отдельный список, и вывел максимальное значение из этого списка
+class Solution(object):
+    def maximumWealth(self, accounts):
+        tocompare=[]
+        for account in accounts:
+            tocompare.append(sum(account))
+        return max(tocompare)
+        
