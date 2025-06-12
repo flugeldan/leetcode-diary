@@ -1,0 +1,65 @@
+# 1275. Find Winner on a Tic Tac Toe Game
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/description/?envType=study-plan-v2&envId=programming-skills
+
+Снизу каждый блок буду расписывать (winner было очень лишним, в литкоде засабмитил более нормальное решение, но логика одна и та же в проверках)
+
+class Solution(object):
+    def tictactoe(self, moves):
+        board=[[0,0,0], [0,0,0],[0,0,0]]
+        winner=None
+        for i in range(len(moves)): # заполнение поля
+            row, col= moves[i]
+            if i%2==0:
+                board[row][col]='X'
+            elif i%2!=0:
+                board[row][col]='0'
+
+        if winner is None:        # Проверка в строках, берем строку как элемент матрицы и [0,0,0] и проверяем сколько там X или '0'
+            for row in board:
+                if row.count('X')==3:
+                    winner='A'
+                    return winner
+                if row.count('0')==3:
+                    winner='B'
+                    return winner
+        
+        if winner is None:                                       #Проверка по столбцам, задаем изначально столбец, и ниже добавляем в список самообновляющийся и удаляющийся элементы каждого столбоца
+            for col in range(3):      
+                column=[board[row][col] for row in range(3)]    # добавляем в список board[row][col] проходясь по строкам циклом for i in range 3, col остается одним стабильным изза задного его раннее
+                if column.count('X')==3:
+                    winner='A'
+                    return winner
+                elif column.count('0')==3:
+                    winner='B'
+                    return winner
+
+        if winner is None:                       #Проверка по диагонали, [i][i] всегда диагональ
+            diag=[board[i][i] for i in range(3)] #Диагональ это список в который мы добавляем элементы board[i][i] из цикла for i in range(3)
+            if diag.count('X')==3:          
+                    winner='A'
+                    return winner
+            elif diag.count('0')==3:
+                    winner='B'
+                    return winner
+
+            if winner is None:                   # Та же проверка диагонали справа
+                antidiag=[board[i][2-i] for i in range(3)] # Тот же самый список что и слева, но теперь столбцы вычисляются по 2-i для построения обратной диагонали
+                if antidiag.count('X')==3:
+                    winner='A'
+                    return winner
+                elif antidiag.count('0')==3:
+                    winner='B'
+                    return winner
+        if len(moves)==9: #если было введено 9 ходов, они автоматом исчеркали всё поле
+            return 'Draw'
+        return 'Pending' # это на случай если виннер не определен еще, значит не было сделано достаточно ходов, раз они дошли до этого и это не ничья
+
+
+
+
+
+             
+        
+
+
