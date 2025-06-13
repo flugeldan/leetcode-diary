@@ -1,0 +1,23 @@
+# 1232. Check If It Is a Straight Line
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/check-if-it-is-a-straight-line/description/?envType=study-plan-v2&envId=programming-skills
+
+Нужна формульная проверка на коллинеарность
+(x - x₀) * dy == (y - y₀) * dx
+x0, y0 — первая точка,
+dx = x1 - x0, dy = y1 - y0 — направление прямой.
+Формула проверяет, лежат ли все точки на ней.
+
+class Solution(object):
+    def checkStraightLine(self, coordinates):
+        x0, y0 = coordinates[0]
+        x1, y1 = coordinates[1]
+        dx = x1 - x0
+        dy = y1 - y0
+        for i in range(2, len(coordinates)):
+            x, y = coordinates[i]
+            if (x-x0)*dy != (y-y0)*dx:
+                return False
+        return True
+
+        
