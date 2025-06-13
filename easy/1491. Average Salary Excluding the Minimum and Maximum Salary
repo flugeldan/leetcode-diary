@@ -1,0 +1,6 @@
+# 1491. Average Salary Excluding the Minimum and Maximum Salary
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/description/
+
+Логика задачи понятная, от суммы отнять макс и мин(они только 1 раз встречаются в списке) и поделить на новую длину списка, единственное в чём была проблема
+Что он выводил не флоатом, нужно чтобы хотя бы 1 был флоат, проблема int/int в пайтон
