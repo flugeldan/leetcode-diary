@@ -1,0 +1,69 @@
+# 860. Lemonade Change
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/lemonade-change/description/?envType=study-plan-v2&envId=programming-skills
+
+Сначала написал оч медленный код, потом чуть оптимизировал и переделал логику, снизу две версии кода, первая медленная, вторая оптимизированная уже.
+
+class Solution(object):
+    def lemonadeChange(self, bills):
+        times=0
+        for x in bills:
+            if x !=5:
+                break
+            else:
+                times+=1
+        realorders=bills[times:]
+        change=[5]*times
+        for x in realorders:
+            if x==10:
+                if change.count(5) >=1:
+                    change.remove(5)
+                    change.append(10)
+                else:
+                    return False
+            elif x==20:
+                if change.count(5) >=1 and change.count(10) >=1:
+                    change.remove(5)
+                    change.remove(10)
+                    change.append(20)
+                elif change.count(5) >=3 and change.count(10) <1:
+                    change.remove(5)
+                    change.remove(5)
+                    change.remove(5)
+                    change.append(20)
+                else:
+                    return False
+            elif x==5:
+                change.append(5)
+        return True
+Минусы: громоздкий, count() замедляет и дает O(n**2)
+
+class Solution(object):
+    def lemonadeChange(self, bills):
+        tens=0
+        fives=0
+        for x in bills:
+            if x == 5:
+                fives+=1
+            elif x == 10:
+                if fives >=1:
+                    fives -=1
+                    tens +=1
+                else:
+                    return False
+            else:
+                if x == 20: # не создаем переменную twenties, потому что ими не даем сдачу, они самые большие
+                    if tens>=1 and fives >=1:
+                        tens -=1
+                        fives -=1
+                    elif tens <1 and fives >=3:
+                        fives -=3
+                    else:
+                        return False
+        return True
+
+Создали fives, tens, чтобы выражать количество пятерок для сдачи, не создал двадцатки потому что  ими не отдать сдачу.
+Идем по циклу, проверяя значение, после проверки значения, проверяем есть ли на него сдача и убавляем и прибавляем сдачу и купюру соотвественно.
+
+        
+        
