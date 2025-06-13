@@ -1,0 +1,20 @@
+# 1572. Matrix Diagonal Sum
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/matrix-diagonal-sum/description/?envType=study-plan-v2&envId=programming-skills
+
+Задача очень легкая, сначала решил ее в 3 строки через обычный цикл где count=0, count+=1, for i in range(low,high+1)
+но потом подумал, по сути можно вместить все в одну строку, создав список в который добавлю все те цифры и просто выведу len списка
+class Solution(object):
+    def countOdds(self, low, high):
+        return len(list(filter(lambda x: x % 2 != 0, range(low, high + 1))))
+
+len( -- длина списка
+list -- создание списка
+filter --- filter(function, iterable), просто фильтрует и кидает пропускает то что True
+Возвращает только те элементы, для которых function(x) возвращает True.
+
+Работает похоже на if внутри цикла, но в функциональном стиле.
+
+lambda x: x % 2 != 0 проверка на нечетность, стоит на месте function в filter(function, iterable)
+range(low, high + 1) просто список всех тех цифр, но не знаю ли как это бы себя вело при супер больших цифрах, возможно есть еще способы оптимизировать о которых 
+пока не знаю, или модуль какой нибудь, в будущем научусь
