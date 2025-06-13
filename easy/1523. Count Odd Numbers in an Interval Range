@@ -1,6 +1,8 @@
-# 1572. Matrix Diagonal Sum
+# 1572. 1523. Count Odd Numbers in an Interval Range
 # Difficulty: Easy
-# Link: https://leetcode.com/problems/matrix-diagonal-sum/description/?envType=study-plan-v2&envId=programming-skills
+# Link: https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/description/?envType=study-plan-v2&envId=programming-skills
+Решил двумя способами, для маленьких и больших массивов. Сперва для маленьких, ниже для больших.
+
 
 Задача очень легкая, сначала решил ее в 3 строки через обычный цикл где count=0, count+=1, for i in range(low,high+1)
 но потом подумал, по сути можно вместить все в одну строку, создав список в который добавлю все те цифры и просто выведу len списка
@@ -18,3 +20,4 @@ filter --- filter(function, iterable), просто фильтрует и кид
 lambda x: x % 2 != 0 проверка на нечетность, стоит на месте function в filter(function, iterable)
 range(low, high + 1) просто список всех тех цифр, но не знаю ли как это бы себя вело при супер больших цифрах, возможно есть еще способы оптимизировать о которых 
 пока не знаю, или модуль какой нибудь, в будущем научусь
+
