@@ -1,0 +1,41 @@
+# 73. Set Matrix Zeroes
+# Difficulty: Medium
+# Link: https://leetcode.com/problems/set-matrix-zeroes/description/?envType=study-plan-v2&envId=programming-skills
+
+Well, first medium problem, i have spent about 1,5h. After i sent code to chat for a quick review, as it said, i can use flags and sets.
+I will come back to this after i will take a rest, so i could rethink the code, and understand the logic of the optimized version.
+
+class Solution(object):
+    def setZeroes(self, matrix):
+        extra=[]
+        for row in range(len(matrix)):
+            for col in range(len(matrix[row])):
+                column=matrix[row]
+                if column[col]==0:
+                    extra.append((row, col))
+        for row, col in extra:
+            for i in range(len(matrix)):
+                matrix[i][col]=0
+            for j in range(len(matrix[row])):
+                matrix[row][j]=0
+        return matrix
+
+1.Using a first cycle to remember every row and column, adding them into list extra with coordinates.
+2.Creating second cycle with 2 cycles inside.
+First cycle sets all columns to 0 by using coordinates.
+Second cycle sets entire row to zero, using its length (len(matrix[row))
+Problems in this code: 
+Sometimes you might set zero where you already once did, so on big data its bad for time
+
+To optimize, you can use flags in the matrix itself (in the first row and the first column).
+
+
+
+
+
+                
+                        
+
+
+
+
