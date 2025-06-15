@@ -1,0 +1,11 @@
+# 43. Multiply Strings
+# Difficulty: Medium
+# Link: https://leetcode.com/problems/multiply-strings/description/?envType=study-plan-v2&envId=programming-skills
+
+class Solution(object):
+    def multiply(self, num1, num2):
+        return str(int(num1)*int(num2))
+
+Easy problem tho, just gotta make int both strings, multiply, and make the product string
+Str- makes product string
+int(num1) int(num2) turns both elements into integers
