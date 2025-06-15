@@ -1,0 +1,19 @@
+# 258. Add Digits
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/add-digits/description/
+
+Easy one, honestly could be solved way easily, gonna sleep and come back to it to optimize it
+
+class Solution(object):
+    def addDigits(self, num):
+        while num>9:
+            newnum=0
+            for i in str(num):
+                newnum+=int(i)
+            num=newnum
+        return num
+
+  While num <9 (more than 1 digit)
+Adding "newnum" and setting it to zero after everycycle
+Making num str in cycle so i can operate with it digits like with indexes
+After that adding every digit to newnum, and after cycle making num into newnum, and after that newnum being set to zero so it can be again sum of digits
