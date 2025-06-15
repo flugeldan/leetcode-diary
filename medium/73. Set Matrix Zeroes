@@ -29,6 +29,41 @@ Sometimes you might set zero where you already once did, so on big data its bad 
 
 To optimize, you can use flags in the matrix itself (in the first row and the first column).
 
+Более оптимизированное решение, использует первый столбик и строку как маркеры, чтобы от них если есть ноль спускаться по столбам снизу обнуляя столбик и строку сразу.
+
+class Solution(object):
+    def setZeroes(self, matrix):
+        rows = len(matrix)
+        cols = len(matrix[0])
+        
+        row0_zero = any(matrix[0][j] == 0 for j in range(cols))
+        col0_zero = any(matrix[i][0] == 0 for i in range(rows))
+        
+        # Используем первую строку и первый столбец как флаги
+        for i in range(1, rows):
+            for j in range(1, cols):
+                if matrix[i][j] == 0:
+                    matrix[i][0] = 0
+                    matrix[0][j] = 0
+        
+        # Обнуляем на основе флагов
+        for i in range(1, rows):
+            for j in range(1, cols):
+                if matrix[i][0] == 0 or matrix[0][j] == 0:
+                    matrix[i][j] = 0
+        
+        # Обнуляем первую строку при необходимости
+        if row0_zero:
+            for j in range(cols):
+                matrix[0][j] = 0
+        
+        # Обнуляем первый столбец при необходимости
+        if col0_zero:
+            for i in range(rows):
+                matrix[i][0] = 0
+я понял что мы используем первую строку как маркер, чтобы там ставить нули (и это не меняло массив сразу там чтобы не было лишних обнулений), потом в проверке мы проверяем по столбцам 
+потом проверка, первой строки и столбца, если там где то есть нолик, то он будет спускаться ставя нули по столбцам, а так же обнулит строку
+
 
 
 
