@@ -1,0 +1,14 @@
+# 67. Add Binary
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/add-binary/description/?envType=study-plan-v2&envId=programming-skills
+
+Kind of an easy problem, just gotta int both integers, put them in our calculating system, add to each other, then make it to binary, and str it.
+
+class Solution(object):
+    def addBinary(self, a, b):
+        return str(format(int(a,2)+int(b,2), 'b'))
+        
+
+str- makes it string
+format(integer, 'b') - returns it to binary
+int(a,2) int(b,2) puts them into our system and adds to each other
