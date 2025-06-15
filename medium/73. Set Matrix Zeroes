@@ -82,6 +82,9 @@ Here we don't touch the first row and column so that we don't lose the flags.
 Step 4: Zero the first row and the first column (if necessary)
 IMPORTANT: we do it at the end, because they store flags, and it was impossible to zero them before.
 
+Если нолик есть в первой строке, значит от в каждой строке обнуляет место где на 1 строке был нолик, а если стоит нолик в 1 столбце в этой строке, срабатывает or на каждый элемент этой строки обнуляя строку
+потом идет обнуление всей первой строки и первого столбца если там что от есть, до этого мы это делали чтобы не детектило лишние нули и не обнуляло все подряд
+
 
 
 
