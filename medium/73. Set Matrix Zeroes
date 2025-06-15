@@ -30,6 +30,9 @@ Sometimes you might set zero where you already once did, so on big data its bad 
 To optimize, you can use flags in the matrix itself (in the first row and the first column).
 
 Более оптимизированное решение, использует первый столбик и строку как маркеры, чтобы от них если есть ноль спускаться по столбам снизу обнуляя столбик и строку сразу.
+Использует проверку в начале чтобы проверить есть ли в первой строке или столбце нули. (И запоминает были ли там нули или нет)
+Потом уже циклами использует первую строку как маркер
+
 
 class Solution(object):
     def setZeroes(self, matrix):
@@ -62,7 +65,22 @@ class Solution(object):
             for i in range(rows):
                 matrix[i][0] = 0
 я понял что мы используем первую строку как маркер, чтобы там ставить нули (и это не меняло массив сразу там чтобы не было лишних обнулений), потом в проверке мы проверяем по столбцам 
-потом проверка, первой строки и столбца, если там где то есть нолик, то он будет спускаться ставя нули по столбцам, а так же обнулит строку
+потом проверка, первой строки и столбца, если там где то есть нолик, то он будет спускаться ставя нули по столбцам, а так же обнулит строку.
+Мы используем первую строку для пометки какие столбцы надо удалить, и первый столбец для пометки какие строки нужно удалить.
+Step 1: Check if the first row and the first column should be zeroed
+If there is at least one 0 in the first row → in the future we will zero the whole first row.
+
+Go through the rest of the matrix starting from (1,1)
+
+matrix[i][0] = 0 - so row i should be zeroed out.
+
+matrix[0][j] = 0 - so column j should be zeroed out.
+
+Step 3: Second pass - zeroing by flags
+Here we don't touch the first row and column so that we don't lose the flags.
+
+Step 4: Zero the first row and the first column (if necessary)
+IMPORTANT: we do it at the end, because they store flags, and it was impossible to zero them before.
 
 
 
