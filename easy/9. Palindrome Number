@@ -1,0 +1,10 @@
+# 9. Palindrome Number
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/palindrome-number/submissions/1665226584/
+
+Easy one, just one line to output if str(x) == str(x)[::-1](reversed string)
+
+class Solution(object):
+    def isPalindrome(self, x):
+        return str(x)==str(x)[::-1]
+        
