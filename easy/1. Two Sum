@@ -1,0 +1,28 @@
+# 1. Two Sum
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/two-sum/description/
+Well, i have done solution, by it was O(n^2). I done it by brute force, but i have found a better one, and here is my review
+
+First we gonna create a dictionary, where we will be keep nums[i]:index of i, then we will go into a cycle, where we will be creating 
+integer that needs to be added to current one to make it to target.
+And if that 'key' already in dictionary, we will return both indexex of i, and that found one.
+First iteration will be empty, but we will remember current iteration.
+And by next iterations it will be checking previous numbers and check if there is integer that could be added to current so it can be target integer.
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        numtoind={} # создаем словарь где будем хранить значение:индекс
+        for i in range(len(nums)): # перебор всех индексов
+            need= target-nums[i]    # спрашиваем есть ли число недостающее к nums[i] что бы быть
+            if need in numtoind:
+                return [numtoind[need], i]
+            numtoind[nums[i]]=i # запоминаем в ключе нынешнюю пару
+
+Вообщем, мы создаем список в котором будет хранить числа и их индексы КЛЮЧ:ИНДЕКС ключом выступает само число
+потом мы будем проходиться по списку, создадим переменную которая будет необходима чтобы прибавить ее к текущему числу чтобы был таргет, а это target-nums[i]
+Позже мы проверяем наличие этой переменной как ключа в списке, и если да то выводим индексы i, и значение ключа
+После каждой итерации добавляем в словарь нынешнюю пару значение:индекс
+Сначала словарь будет пустой, он будет идти и проверять если ли в предыдущих значениях что то, что если добавить к текущему то будет target
+
+
+        
