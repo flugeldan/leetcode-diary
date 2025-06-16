@@ -8,7 +8,11 @@ integer that needs to be added to current one to make it to target.
 And if that 'key' already in dictionary, we will return both indexex of i, and that found one.
 First iteration will be empty, but we will remember current iteration.
 And by next iterations it will be checking previous numbers and check if there is integer that could be added to current so it can be target integer.
+The dictionary starts empty, so nothing is found on the first iteration.
 
+As we go, we remember previous numbers.
+
+Each time, we check if the needed number (to reach the target) has already been seen.
 class Solution(object):
     def twoSum(self, nums, target):
         numtoind={} # создаем словарь где будем хранить значение:индекс
