@@ -1,0 +1,12 @@
+# 136. Single Number
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/single-number/description/
+First i have done it with O(n^2) time because of count, when i send it to chatgpt for a review, it has told me that its bad for memory, so there is my solution first
+then chatgpt's
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        return next(filter(lambda x: nums.count(x) < 2, nums))
+
+
+.count is O(n^2)
