@@ -1,0 +1,41 @@
+# 121. Best Time to Buy and Sell Stock
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+
+At first, we do count first element of list as minimum, current iteration of cycle has less value than 'minimum', we do set it to this value.
+The idea of this cycle, is to count and compare max profits in every iteration from the first one.
+Because we took first element as minimum, and formula for profit is 'max_profit=price-minimum'
+It will be zero in first day, if next days has lower price, then max_profit will be <0: 
+We do have only 2 ifs in this cycle
+First one is if current is less than minimum set than been set before.
+Second one to check if current price-min_stock than been set before > max_profit of previous iterations.
+It means if current price is better than previous, second even if new min_stock will be set, it still needs to have better price-min
+So if we didnt take the most min value, but price-min_stock > real price-realmin_stock, than profit of non most min still will be set as best profit
+If we will count best profit, but in the future it will find something even less than min_stock(that been set before) but next gonna be even less
+It just gonna keep repeating the cycle of setting new min_stock looking for a best profit.
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        max_profit=0
+        min_stock=prices[0]
+        for price in prices:
+            if price<min_stock:
+                min_stock=price
+            elif price-min_stock >max_profit:
+                max_profit=price-min_stock
+        return max_profit
+
+        
+
+
+
+
+
+
+
+
+
+            
+            
+
+        
+        
