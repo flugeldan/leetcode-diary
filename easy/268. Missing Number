@@ -1,0 +1,15 @@
+# 268. Missing Number
+# Difficulty: Easy
+# Link: https://leetcode.com/problems/missing-number/description/
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        n=len(nums)
+        expectedsum=sum(x for x in range(n+1))
+        currentsum=sum(x for x in nums)
+        return expectedsum-currentsum
+
+
+
+
+        
+        https://imgur.com/a/MbxeCNb
